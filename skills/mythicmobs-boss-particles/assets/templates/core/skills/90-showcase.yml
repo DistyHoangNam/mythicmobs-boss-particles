@@ -1,0 +1,11 @@
+# Cosmetic test entry; does not need a combat target.
+NXK_Demo_Showcase:
+  Cooldown: 8
+  Skills:
+    - skill{s=NXK_FX_DustRing} @self
+    - delay 15
+    - skill{s=NXK_FX_Sphere} @self
+    - delay 15
+    - skill{s=NXK_FX_Debris} @self
+    - delay 15
+    - skill{s=NXK_FX_Transition} @self

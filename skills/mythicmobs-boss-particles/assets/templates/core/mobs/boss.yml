@@ -1,0 +1,14 @@
+# O18/O19. Combat demo: native melee plus explicitly damaging skills.
+# Shared GCD can skip a timer opportunity; no guaranteed cast alternation.
+NXK_Demo_Boss:
+  Type: HUSK
+  Display: 'NXK Ember Sentinel'
+  Health: 200
+  Damage: 3
+  Options:
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+  Skills:
+    - skill{s=NXK_FX_Embers} @self ~onSpawn
+    - skill{s=NXK_Slam_Cast} @self ~onTimer:160
+    - skill{s=NXK_Bolt_Cast} @target ~onTimer:100

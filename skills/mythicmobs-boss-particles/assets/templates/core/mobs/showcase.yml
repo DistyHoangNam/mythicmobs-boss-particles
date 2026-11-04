@@ -1,0 +1,17 @@
+# O18/O19/O36/O37. Cleared AI goals/targets; do NOT use NoAI=true.
+NXK_Demo_ShowcaseMob:
+  Type: HUSK
+  Display: 'NXK Particle Showcase'
+  Health: 20
+  Damage: 0
+  Options:
+    MovementSpeed: 0
+    Invincible: true
+    Interactable: true
+    PreventOtherDrops: true
+  AIGoalSelectors:
+    - clear
+  AITargetSelectors:
+    - clear
+  Skills:
+    - skill{s=NXK_Demo_Showcase} @self ~onInteract

@@ -1,0 +1,21 @@
+# Caster-centered, MOVING warning. This is not a captured ground decal.
+# O03/O10/O20/O24/O27. Warnings at ticks 0/10/20, impact at tick 30.
+NXK_Slam_Cast:
+  Cooldown: 8
+  Conditions:
+    - offgcd
+    - targetwithin{d=10} true
+  Skills:
+    - gcd{ticks=50}
+    - skill{s=NXK_FX_SlamWarning} @self
+    - delay 10
+    - skill{s=NXK_FX_SlamWarning} @self
+    - delay 10
+    - skill{s=NXK_FX_SlamWarning} @self
+    - delay 10
+    - particlesphere{particle=FLAME;radius=4;amount=40;hs=0;vs=0;speed=0;y=0.1} @self
+    - damage{amount=6} @PlayersInRadius{r=4}
+
+NXK_FX_SlamWarning:
+  Skills:
+    - particlering{particle=DUST;color=#FF5533;size=1;radius=4;points=40;amount=1;hs=0;vs=0;speed=0;y=0.1} @self

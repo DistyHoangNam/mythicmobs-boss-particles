@@ -1,0 +1,21 @@
+# Newly authored from O14/O24; callback architecture observed in C01.
+# Direct damage is in onHit only; tick is cosmetic, no onEnd damage.
+NXK_Bolt_Cast:
+  Cooldown: 4
+  Conditions:
+    - offgcd
+    - targetwithin{d=24} true
+  Skills:
+    - gcd{ticks=40}
+    - projectile{onTick=NXK_Bolt_Tick;onHit=NXK_Bolt_Hit;velocity=12;interval=2;duration=60;maxRange=24;hRadius=0.6;vRadius=0.6;startYOffset=1;startFOffset=0.5;targetYOffset=1;stopAtEntity=true;stopAtBlock=true;hitPlayers=true;hitNonPlayers=false} @target
+
+NXK_Bolt_Tick:
+  Skills:
+    - particles{particle=FLAME;amount=2;hs=0.08;vs=0.08;speed=0} @origin
+    - particles{particle=SMOKE;amount=1;hs=0.12;vs=0.12;speed=0} @origin
+
+NXK_Bolt_Hit:
+  Skills:
+    # Intentionally no targeter: inherit the actual collided entities.
+    - damage{amount=4}
+    - particles{particle=FLAME;amount=10;hs=0.35;vs=0.35;speed=0} @origin

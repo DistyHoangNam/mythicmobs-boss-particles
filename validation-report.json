@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "validation_kind": "YAML parsing and static checks for the NXK subset",
+  "runtime_tested": false,
+  "server_profile_intent": "MythicMobs 5.14.0; exact supported Paper/Minecraft build must be tested",
+  "yaml_files": 13,
+  "yaml_parsed": 13,
+  "metaskills": 28,
+  "mobs": 3,
+  "skill_lines": 52,
+  "references_checked": 20,
+  "dynamic_values_not_evaluated": [
+    "optional/premium-parameters.skills.yml::NXK_Premium_Burst.Skills[1]: amount=<skill.count> (not evaluated)",
+    "optional/premium-parameters.skills.yml::NXK_Premium_Burst.Skills[1]: hs=<skill.spread> (not evaluated)"
+  ],
+  "warnings": [],
+  "errors": [],
+  "files": [
+    "core/mobs/boss.yml",
+    "core/mobs/fixed-zone.yml",
+    "core/mobs/showcase.yml",
+    "core/packinfo.yml",
+    "core/skills/00-palette.yml",
+    "core/skills/10-shapes.yml",
+    "core/skills/20-projectile.yml",
+    "core/skills/30-slam.yml",
+    "core/skills/40-aura.yml",
+    "core/skills/50-fixed-zone.yml",
+    "core/skills/90-showcase.yml",
+    "optional/geometry.skills.yml",
+    "optional/premium-parameters.skills.yml"
+  ]
+}

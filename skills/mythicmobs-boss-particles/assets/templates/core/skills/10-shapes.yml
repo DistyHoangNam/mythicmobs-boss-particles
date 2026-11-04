@@ -1,0 +1,31 @@
+# Cosmetic only; no collision damage. Sources O10-O13, O15, O16, O28.
+# Amount means count per sample for ring/line variants; keep it low.
+NXK_FX_Ring:
+  Skills:
+    - particlering{particle=FLAME;radius=3;points=32;amount=1;hs=0;vs=0;speed=0;y=0.1} @self
+
+NXK_FX_Sphere:
+  Skills:
+    - particlesphere{particle=END_ROD;radius=2;amount=32;hs=0;vs=0;speed=0;y=1} @self
+
+NXK_FX_Box:
+  Skills:
+    - particlebox{particle=CRIT;radius=2;amount=24;hs=0;vs=0;speed=0;y=1} @self
+
+# Line variants require the caster to have a current target.
+NXK_FX_Line:
+  Skills:
+    - particleline{particle=ELECTRIC_SPARK;amount=1;distanceBetween=0.4;maxdistance=24;startYOffset=1;targetYOffset=1;hs=0;vs=0;speed=0} @target
+
+NXK_FX_Helix:
+  Skills:
+    - particlelinehelix{particle=END_ROD;amount=1;distanceBetween=0.5;helixlength=3;helixradius=0.35;helixrotation=0;maxdistance=24;startYOffset=1;targetYOffset=1;hs=0;vs=0;speed=0} @target
+
+NXK_FX_LineRing:
+  Skills:
+    - particlelinering{particle=FLAME;amount=1;distanceBetween=0.75;ringpoints=8;ringradius=0.35;maxdistance=16;startYOffset=1;targetYOffset=1;hs=0;vs=0;speed=0} @target
+
+# In particleorbital, p is an alias for points, not the particle type.
+NXK_FX_Orbital:
+  Skills:
+    - particleorbital{particle=END_ROD;radius=2;points=16;ticks=60;interval=2;amount=1;hs=0;vs=0;speed=0;offsetY=1} @self

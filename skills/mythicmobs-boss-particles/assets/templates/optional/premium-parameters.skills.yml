@@ -1,0 +1,9 @@
+# OPTIONAL PREMIUM ONLY: skill parameters and numeric placeholders. O33.
+# Intended 5.14.0; no defaults in the helper. Wrapper supplies both values.
+NXK_Premium_Burst:
+  Skills:
+    - particles{particle=FLAME;amount=<skill.count>;hs=<skill.spread>;vs=0.3;speed=0;y=1} @self
+
+NXK_Premium_Demo:
+  Skills:
+    - skill{s=NXK_Premium_Burst;count=12;spread=0.5} @self

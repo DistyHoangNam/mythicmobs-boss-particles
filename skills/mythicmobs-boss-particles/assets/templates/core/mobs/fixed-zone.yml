@@ -1,0 +1,11 @@
+# Isolated combat demo for the captured-location totem example.
+NXK_Demo_FixedZoneMob:
+  Type: HUSK
+  Display: 'NXK Rune Caster'
+  Health: 100
+  Damage: 2
+  Options:
+    MovementSpeed: 0.15
+    PreventOtherDrops: true
+  Skills:
+    - skill{s=NXK_Zone_Cast} @TargetLocation ~onTimer:180

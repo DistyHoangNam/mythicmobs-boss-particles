@@ -1,0 +1,19 @@
+# O23/O21/O24. Totem captures target LOCATION at placement.
+# No terrain snapping. End effect also requires early-termination testing.
+NXK_Zone_Cast:
+  Cooldown: 8
+  Conditions:
+    - offgcd
+    - targetwithin{d=20} true
+  Skills:
+    - gcd{ticks=60}
+    - totem{onTick=NXK_Zone_Tick;onEnd=NXK_Zone_Impact;duration=40;interval=5;yOffset=0;hRadius=0.1;vRadius=0.1;stopAtEntity=false;stopAtBlock=false} @TargetLocation
+
+NXK_Zone_Tick:
+  Skills:
+    - particlering{particle=DUST;color=#CC66FF;size=1;radius=3;points=32;amount=1;hs=0;vs=0;speed=0;y=0.1} @origin
+
+NXK_Zone_Impact:
+  Skills:
+    - particlesphere{particle=CLOUD;radius=3;amount=30;hs=0;vs=0;speed=0;y=0.1} @origin
+    - damage{amount=4} @PlayersNearOrigin{r=3}

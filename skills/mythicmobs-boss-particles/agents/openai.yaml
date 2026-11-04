@@ -1,0 +1,4 @@
+interface:
+  display_name: "MythicMobs Boss & Particles"
+  short_description: "Build and convert MythicMobs boss and particle YAML"
+  default_prompt: "Use $mythicmobs-boss-particles to create or convert a boss skill with a clear particle telegraph and version notes."

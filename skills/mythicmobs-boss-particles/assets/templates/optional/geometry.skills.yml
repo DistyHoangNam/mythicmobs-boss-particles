@@ -1,0 +1,18 @@
+# OPTIONAL: copy deliberately into a pack's skills directory. O30/O31.
+# Cosmetic only; no onHit callback. Verify orientation in-world.
+NXK_FX_Sigil:
+  Skills:
+    - polygon{onEdge=NXK_FX_SigilPoint;points=5;skip=2;scale=3;distanceBetween=0.4;duration=0;matchCasterDirection=false;yOffset=0.1} @selflocation
+
+NXK_FX_SigilPoint:
+  Skills:
+    # Inherit the point selected by the geometry mechanic.
+    - particles{particle=END_ROD;amount=1;hs=0;vs=0;speed=0}
+
+NXK_FX_Slash:
+  Skills:
+    - slash{onPoint=NXK_FX_SlashPoint;points=16;width=3;height=1.5;angle=120;duration=5;matchCasterDirection=true;yOffset=1} @selflocation
+
+NXK_FX_SlashPoint:
+  Skills:
+    - particles{particle=CRIT;amount=1;hs=0;vs=0;speed=0}

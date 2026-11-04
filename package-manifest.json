@@ -1,0 +1,22 @@
+{
+  "name": "mythicmobs-codex-kit",
+  "version": "1.0.0",
+  "research_date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "skill": "mythicmobs-boss-particles",
+  "latest_verified_mythicmobs": "5.14.0",
+  "sources": 44,
+  "community_primary_pages": 3,
+  "community_projects": 2,
+  "yaml_templates_including_packinfo": 13,
+  "metaskills": 28,
+  "mobs": 3,
+  "static_status": "passed",
+  "runtime_tested": false,
+  "checker_regression_tests": 15,
+  "checker_regression_status": "passed",
+  "skill_creator_validation": "passed",
+  "internal_markdown_links": "passed",
+  "runtime_dependencies": "Supported Minecraft server and MythicMobs; optional example requires Premium",
+  "checker_dependencies": "Python 3.10+ and PyYAML==6.0.3"
+}

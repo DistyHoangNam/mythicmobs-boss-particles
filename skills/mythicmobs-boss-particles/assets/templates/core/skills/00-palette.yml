@@ -1,0 +1,17 @@
+# Modern particle names; intended MythicMobs 5.14.0. Sources O04, O07-O10.
+# All entries in this file are cosmetic. Original NXK_ templates.
+NXK_FX_Embers:
+  Skills:
+    - particles{particle=FLAME;amount=8;hs=0.3;vs=0.2;speed=0;y=0.7} @self
+
+NXK_FX_DustRing:
+  Skills:
+    - particlering{particle=DUST;color=#FF9D33;size=1;radius=3;points=32;amount=1;hs=0;vs=0;speed=0;y=0.1} @self
+
+NXK_FX_Transition:
+  Skills:
+    - particles{particle=DUST_COLOR_TRANSITION;color=#66CCFF;color2=#BB66FF;size=1;amount=12;hs=0.5;vs=0.3;speed=0;y=1} @self
+
+NXK_FX_Debris:
+  Skills:
+    - particles{particle=BLOCK;material=STONE;amount=12;hs=0.6;vs=0.1;speed=0;y=0.15} @self

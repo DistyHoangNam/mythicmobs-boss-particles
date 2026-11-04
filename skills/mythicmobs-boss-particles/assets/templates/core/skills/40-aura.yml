@@ -1,0 +1,9 @@
+# O25. Self-applied finite cosmetic aura, no persistent entities.
+NXK_FX_Aura:
+  Cooldown: 6
+  Skills:
+    - aura{auraName=NXK_EmberAura;onTick=NXK_FX_AuraTick;duration=80;interval=5;maxStacks=1;refreshDuration=false;cancelOnDeath=true;cancelOnCasterDeath=true;cancelOnChangeWorld=true} @self
+
+NXK_FX_AuraTick:
+  Skills:
+    - particles{particle=FLAME;amount=3;hs=0.3;vs=0.4;speed=0;y=0.7} @self
