@@ -1,58 +1,43 @@
-[Uploading README-VI.md…]()
-# Bộ Codex skill MythicMobs — boss, mechanics và particles
+[SKILL.md](https://github.com/user-attachments/files/34387691/SKILL.md)
+---
+name: mythicmobs-boss-particles
+description: Create, review, or convert MythicMobs mob, boss, metaskill, and particle YAML using bundled official documentation notes, community patterns, and checked templates. Use for MythicMobs configuration, not Java plugin development or client mods.
+---
 
-Gói 1.0.0, nghiên cứu ngày **05/11/2026 (Asia/Bangkok)**. Mốc phát hành được xác minh: MythicMobs **5.14.0 — 30/10/2026**. Gói lưu kiến thức đã chọn lọc để Codex có thể dùng lại ngoại tuyến cho các trường hợp được bao phủ.
+# MythicMobs boss and particle authoring
 
-## Có gì trong gói
+Use this local knowledge kit for repeatable MythicMobs configuration work. Research snapshot: **2026-11-05, Asia/Bangkok**; latest release verified in this snapshot: **5.14.0**. The notes are curated, not the complete wiki or a promise about later builds.
 
-- Một skill `mythicmobs-boss-particles`: viết boss/mob, hiệu ứng hạt, review và chuyển đổi cấu hình.
-- Tài liệu tham khảo về mechanic, target/origin, particle data, hình học, ngân sách hạt, mẫu tổ chức file và chuyển đổi.
-- Các template YAML tự viết: palette, ring/sphere/box/line/helix/orbital, projectile, slam, aura, vùng cảnh báo cố định, mob demo; hình học và tham số Premium đặt riêng.
-- Nguồn chính thức và ví dụ YAML cộng đồng có tác giả/đường dẫn, ngày truy cập, phân loại và giới hạn bằng chứng.
-- Công cụ kiểm tra YAML, khóa trùng, callback, tham chiếu nội bộ và một tập cú pháp hữu hạn; báo cáo và bộ thử lỗi đi kèm.
+## Establish the target
 
-**Đã kiểm tra YAML và cấu trúc ngoại tuyến; chưa chạy MythicMobs/Minecraft.** Không nên hiểu “validated” là đã xác nhận gameplay, hình dạng, sát thương hoặc hiệu năng trên server. Không có plugin JAR, boss pack trả phí hay bộ chuyển đổi đa nền tảng tự động trong gói.
+Read existing files, logs, or project notes for the exact Minecraft/server implementation, MythicMobs build and edition, Java version, and installed addons. If unknown, draft using the explicitly stated assumption **MythicMobs 5.14.0 on a supported Paper server, modern particle names**, and identify this assumption in the result. Ask for the version when it changes a required feature. Do not assume an NXS/Hybrid pack or addon is a MythicMobs feature from its name alone.
 
-## Cài vào Codex trên máy này
+Read [compatibility.md](references/compatibility.md) before selecting features. Prefer the core templates, which avoid Premium parameters, inline target conditions, custom origins, models, and addon mechanics. These are design choices, not a certification on every Free build.
 
-1. Giải nén ZIP. Tìm thư mục `skills/mythicmobs-boss-particles` có file `SKILL.md` ngay bên trong.
-2. Với cấu hình Codex đang dùng trong phiên này, chép **cả thư mục** `mythicmobs-boss-particles` vào `C:\Users\HOANG NAM\.codex\skills\`. Kết quả là `C:\Users\HOANG NAM\.codex\skills\mythicmobs-boss-particles\SKILL.md`.
-3. Bản Codex theo tài liệu hiện hành cũng có thể khám phá skill cá nhân tại `%USERPROFILE%\.agents\skills\`; skill theo dự án tại `<project>\.agents\skills\`. Chọn một vị trí mà bản Codex của bạn hỗ trợ, tránh cài trùng tên ở nhiều nơi. Nếu dùng `CODEX_HOME` riêng, dùng thư mục skills của cấu hình đó. Xem [tài liệu OpenAI](https://learn.chatgpt.com/docs/build-skills).
-4. Kiểm tra danh sách Skills; nếu chưa xuất hiện, khởi động lại Codex. Gọi bằng `$mythicmobs-boss-particles` hoặc chọn từ danh sách. Gói không tự sửa cấu hình hay tự cài vào thư mục cá nhân.
+## Choose the relevant material
 
-Chỉ chép thư mục skill, không đặt toàn bộ gói có nhiều tầng ZIP vào thư mục skills. Giữ nguyên các thư mục con `references/`, `assets/`, `scripts/`, `agents/`.
+- Particle palette, data requirements and shape selection: [particles.md](references/particles.md), then [template-catalog.md](references/template-catalog.md).
+- Mob wiring, target inheritance, timers and cooldowns: [mechanics.md](references/mechanics.md).
+- Maintainable boss structure and community evidence: [patterns-and-community.md](references/patterns-and-community.md).
+- Converting existing YAML or another skill system: [conversion.md](references/conversion.md).
+- Verification and server test procedure: [validation.md](references/validation.md).
+- Auditable citations and evidence status: [sources.md](references/sources.md) and [sources.json](references/sources.json).
 
-## Dùng ngay
+Read only what the task needs. Prefer these bundled notes for covered behavior; research again when the user requests current information, a newer version, an undocumented mechanic, an unknown addon, or a contradiction with observed behavior. Do not claim an offline snapshot is permanently current.
 
-```text
-$mythicmobs-boss-particles
-Tạo boss lửa cho Paper [phiên bản], MythicMobs [build], [Free/Premium].
-Dùng kiến thức trong gói: vòng cảnh báo, windup 1.5 giây, projectile có trail,
-tránh chồng cast bằng GCD. Ghi rõ giả định và trạng thái kiểm tra.
-```
+## Build or adapt
 
-```text
-$mythicmobs-boss-particles
-Review và chuyển YAML tôi cung cấp sang MythicMobs [build]. Giữ hành vi gốc,
-liệt kê addon, tên particle cũ, điểm chỉ chuyển gần đúng và các bước test.
-```
+1. Start with a small template under `assets/templates/core/`; rename the `NXK_` identifiers consistently when incorporating it into an existing pack. Keep the caller, visual helpers and gameplay callbacks separate. Check collisions across the destination pack.
+2. Put `~on...` triggers in mob skill lists. Keep metaskill lists free of triggers. Use numeric seconds for `Cooldown`; use numeric ticks for delay, GCD, timers and projectile/aura durations in portable templates.
+3. Distinguish entity targets from locations. Projectile particle callbacks use `@origin`; direct hit damage inherits the hit entities and has no replacement `@target`. Use `@PlayersNearOrigin` for area effects around projectile/totem origins, and `@PlayersInRadius` for caster-centered effects.
+4. Match the warning shape, center, timing and damage area. A ring is visual only. A beam is visual only unless a separate hit mechanic is configured. State whether the effect follows the caster, tracks an entity, or stays at a captured location.
+5. Set explicit particle type, count, spread, speed and a finite duration when relevant. Use `amount=1` for ring/line point samples; increase points or decrease `distanceBetween` deliberately. For `particleorbital`, spell out `particle=` because `p` means points there. Do not invent `points` for `particlesphere`.
+6. Do not emit `particleequation` as working code. Do not convert addon-specific offsets, models or placeholders by renaming the mechanic alone. Explain any approximation and unresolved dependency.
 
-Với phiên bản nằm trong phạm vi ghi chú, Codex đọc tài liệu cục bộ trước. Khi bạn yêu cầu “mới nhất”, dùng build mới hơn hoặc gặp mechanic chưa có trong gói, Codex cần đối chiếu lại nguồn; đây là snapshot có ngày, không phải cơ sở dữ liệu tự cập nhật.
+Copy only the files needed. `assets/templates/optional/` is opt-in and must not be bulk-loaded with core content. The parameter example requires Premium; the geometry example needs orientation testing. Preserve the user's existing folder convention; modern packs use lowercase `mobs/` and `skills/`.
 
-## Dùng template trong Minecraft
+## Validate and deliver
 
-Template là **cấu hình MythicMobs**, không phải thư mục Codex skill. Lấy `skills/mythicmobs-boss-particles/assets/templates/core/`, chép thành `plugins/MythicMobs/packs/nxk_demo/` trên server thử nghiệm. Không chép toàn bộ gói Codex vào plugins. Sau đó theo `references/validation.md`: `/mm reload`, kiểm tra console, chạy `/mm test cast NXK_Demo_Showcase` trong game và thử mob demo. Boss demo có gây sát thương; kiểm tra ở khu vực thử nghiệm.
+Run `python scripts/validate_templates.py --root assets/templates --report validation.json` with Python 3.10+ and PyYAML installed, or adapt the paths to the generated subset. This checker accepts a deliberately small dialect and is **not** MythicMobs' parser. For unsupported valid syntax, extend it from verified docs or use YAML-only checks and report the gap; never rewrite valid user configuration merely to satisfy its allowlist.
 
-File `optional/premium-parameters.skills.yml` cần Premium; các file optional phải được chọn riêng. Phần tương thích ghi rõ các thay đổi 5.11–5.14, tên particle cũ, tính năng WIP và điểm phụ thuộc addon.
-
-## Tự chạy kiểm tra
-
-Trong thư mục skill, dùng Python 3.10+:
-
-```text
-python -m pip install -r scripts/requirements.txt
-python scripts/validate_templates.py --root assets/templates --report validation.json
-python scripts/test_validator.py
-```
-
-Xem `validation-report.json`, `validation-tests.txt`, `skill-validation.txt` và `SHA256SUMS.txt` ở gốc gói để biết kết quả lúc đóng gói. Bộ kiểm tra chỉ hỗ trợ cú pháp template của gói; báo “unsupported” không đồng nghĩa cú pháp bên ngoài chắc chắn sai.
+Report the exact target assumptions, changed files, dependencies, static checks, and runtime status. If there is no test server, say **YAML/static validation passed; Minecraft behavior not tested**. Include concise load/reload/cast steps from the validation reference. Do not say a skill is server-validated based on YAML parsing. Use the user's language; the package includes a Vietnamese installation guide at its root.
